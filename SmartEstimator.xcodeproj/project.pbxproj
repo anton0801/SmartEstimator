@@ -6,11 +6,53 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8F65817A2F5C31EC00E8C5B9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8F6581792F5C31EC00E8C5B9 /* FirebaseAnalytics */; };
+		8F65817C2F5C31EC00E8C5B9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8F65817B2F5C31EC00E8C5B9 /* FirebaseAuth */; };
+		8F65817E2F5C31EC00E8C5B9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8F65817D2F5C31EC00E8C5B9 /* FirebaseDatabase */; };
+		8F6581802F5C31EC00E8C5B9 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8F65817F2F5C31EC00E8C5B9 /* FirebaseMessaging */; };
+		8F6581832F5C31F800E8C5B9 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 8F6581822F5C31F800E8C5B9 /* AppsFlyerLib */; };
+		8F65818F2F5C324700E8C5B9 /* EstimatorExtNotifications.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8F6581882F5C324700E8C5B9 /* EstimatorExtNotifications.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8F6581972F5C325300E8C5B9 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8F6581962F5C325300E8C5B9 /* FirebaseMessaging */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8F65818D2F5C324700E8C5B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8FB60B0E2F4C92CB00BDE229 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F6581872F5C324700E8C5B9;
+			remoteInfo = EstimatorExtNotifications;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8F6581942F5C324700E8C5B9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8F65818F2F5C324700E8C5B9 /* EstimatorExtNotifications.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		8F6581882F5C324700E8C5B9 /* EstimatorExtNotifications.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EstimatorExtNotifications.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FB60B162F4C92CC00BDE229 /* SmartEstimator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartEstimator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8F6581932F5C324700E8C5B9 /* Exceptions for "EstimatorExtNotifications" folder in "EstimatorExtNotifications" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8F6581872F5C324700E8C5B9 /* EstimatorExtNotifications */;
+		};
 		8FB60B262F4C935D00BDE229 /* Exceptions for "SmartEstimator" folder in "SmartEstimator" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -21,6 +63,14 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		8F6581892F5C324700E8C5B9 /* EstimatorExtNotifications */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8F6581932F5C324700E8C5B9 /* Exceptions for "EstimatorExtNotifications" folder in "EstimatorExtNotifications" target */,
+			);
+			path = EstimatorExtNotifications;
+			sourceTree = "<group>";
+		};
 		8FB60B182F4C92CC00BDE229 /* SmartEstimator */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -32,20 +82,42 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8F6581852F5C324700E8C5B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F6581972F5C325300E8C5B9 /* FirebaseMessaging in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8FB60B132F4C92CC00BDE229 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F6581802F5C31EC00E8C5B9 /* FirebaseMessaging in Frameworks */,
+				8F6581832F5C31F800E8C5B9 /* AppsFlyerLib in Frameworks */,
+				8F65817E2F5C31EC00E8C5B9 /* FirebaseDatabase in Frameworks */,
+				8F65817A2F5C31EC00E8C5B9 /* FirebaseAnalytics in Frameworks */,
+				8F65817C2F5C31EC00E8C5B9 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F6581952F5C325300E8C5B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8FB60B0D2F4C92CB00BDE229 = {
 			isa = PBXGroup;
 			children = (
 				8FB60B182F4C92CC00BDE229 /* SmartEstimator */,
+				8F6581892F5C324700E8C5B9 /* EstimatorExtNotifications */,
+				8F6581952F5C325300E8C5B9 /* Frameworks */,
 				8FB60B172F4C92CC00BDE229 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				8FB60B162F4C92CC00BDE229 /* SmartEstimator.app */,
+				8F6581882F5C324700E8C5B9 /* EstimatorExtNotifications.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,6 +134,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8F6581872F5C324700E8C5B9 /* EstimatorExtNotifications */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F6581902F5C324700E8C5B9 /* Build configuration list for PBXNativeTarget "EstimatorExtNotifications" */;
+			buildPhases = (
+				8F6581842F5C324700E8C5B9 /* Sources */,
+				8F6581852F5C324700E8C5B9 /* Frameworks */,
+				8F6581862F5C324700E8C5B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8F6581892F5C324700E8C5B9 /* EstimatorExtNotifications */,
+			);
+			name = EstimatorExtNotifications;
+			packageProductDependencies = (
+				8F6581962F5C325300E8C5B9 /* FirebaseMessaging */,
+			);
+			productName = EstimatorExtNotifications;
+			productReference = 8F6581882F5C324700E8C5B9 /* EstimatorExtNotifications.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		8FB60B152F4C92CC00BDE229 /* SmartEstimator */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8FB60B222F4C92CE00BDE229 /* Build configuration list for PBXNativeTarget "SmartEstimator" */;
@@ -68,16 +164,23 @@
 				8FB60B122F4C92CC00BDE229 /* Sources */,
 				8FB60B132F4C92CC00BDE229 /* Frameworks */,
 				8FB60B142F4C92CC00BDE229 /* Resources */,
+				8F6581942F5C324700E8C5B9 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8F65818E2F5C324700E8C5B9 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				8FB60B182F4C92CC00BDE229 /* SmartEstimator */,
 			);
 			name = SmartEstimator;
 			packageProductDependencies = (
+				8F6581792F5C31EC00E8C5B9 /* FirebaseAnalytics */,
+				8F65817B2F5C31EC00E8C5B9 /* FirebaseAuth */,
+				8F65817D2F5C31EC00E8C5B9 /* FirebaseDatabase */,
+				8F65817F2F5C31EC00E8C5B9 /* FirebaseMessaging */,
+				8F6581822F5C31F800E8C5B9 /* AppsFlyerLib */,
 			);
 			productName = SmartEstimator;
 			productReference = 8FB60B162F4C92CC00BDE229 /* SmartEstimator.app */;
@@ -93,6 +196,9 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
+					8F6581872F5C324700E8C5B9 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					8FB60B152F4C92CC00BDE229 = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -107,17 +213,29 @@
 			);
 			mainGroup = 8FB60B0D2F4C92CB00BDE229;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8F6581782F5C31EC00E8C5B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8F6581812F5C31F800E8C5B9 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8FB60B172F4C92CC00BDE229 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8FB60B152F4C92CC00BDE229 /* SmartEstimator */,
+				8F6581872F5C324700E8C5B9 /* EstimatorExtNotifications */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8F6581862F5C324700E8C5B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8FB60B142F4C92CC00BDE229 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,6 +246,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8F6581842F5C324700E8C5B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8FB60B122F4C92CC00BDE229 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,7 +262,76 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8F65818E2F5C324700E8C5B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F6581872F5C324700E8C5B9 /* EstimatorExtNotifications */;
+			targetProxy = 8F65818D2F5C324700E8C5B9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		8F6581912F5C324700E8C5B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EstimatorExtNotifications/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = EstimatorExtNotifications;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.esimatorapps.SmartEstimator.EstimatorExtNotifications;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8F6581922F5C324700E8C5B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EstimatorExtNotifications/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = EstimatorExtNotifications;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.esimatorapps.SmartEstimator.EstimatorExtNotifications;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		8FB60B202F4C92CE00BDE229 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -267,6 +461,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow to use camera features in application.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Smart Estimator accesses your photo library to select room photos for measurement.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Smart Estimator may access limited technical details from your device to help ensure accurate calculations, maintain stable performance, and improve overall app functionality. This information is used only for internal diagnostics and enhancement of the app experience. It is not used to track users across other apps or websites and is never shared for advertising purposes.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -281,7 +476,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.00.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.esimatorapps.SmartEstimator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -310,6 +505,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow to use camera features in application.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Smart Estimator accesses your photo library to select room photos for measurement.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Smart Estimator may access limited technical details from your device to help ensure accurate calculations, maintain stable performance, and improve overall app functionality. This information is used only for internal diagnostics and enhancement of the app experience. It is not used to track users across other apps or websites and is never shared for advertising purposes.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -324,7 +520,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.00.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.esimatorapps.SmartEstimator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -341,6 +537,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8F6581902F5C324700E8C5B9 /* Build configuration list for PBXNativeTarget "EstimatorExtNotifications" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F6581912F5C324700E8C5B9 /* Debug */,
+				8F6581922F5C324700E8C5B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8FB60B112F4C92CB00BDE229 /* Build configuration list for PBXProject "SmartEstimator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -360,6 +565,58 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8F6581782F5C31EC00E8C5B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.10.0;
+			};
+		};
+		8F6581812F5C31F800E8C5B9 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.17.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8F6581792F5C31EC00E8C5B9 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F6581782F5C31EC00E8C5B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		8F65817B2F5C31EC00E8C5B9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F6581782F5C31EC00E8C5B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		8F65817D2F5C31EC00E8C5B9 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F6581782F5C31EC00E8C5B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		8F65817F2F5C31EC00E8C5B9 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F6581782F5C31EC00E8C5B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		8F6581822F5C31F800E8C5B9 /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F6581812F5C31F800E8C5B9 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
+		};
+		8F6581962F5C325300E8C5B9 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F6581782F5C31EC00E8C5B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8FB60B0E2F4C92CB00BDE229 /* Project object */;
 }

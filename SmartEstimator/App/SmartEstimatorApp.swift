@@ -1,46 +1,70 @@
 import SwiftUI
+import Firebase
 
 @main
 struct SmartEstimatorApp: App {
-    @StateObject private var appState = AppState()
+    @StateObject private var appState   = ApplicationState()
+    @StateObject private var authVM     = AuthViewModel()
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var selfDelegate
 
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .environmentObject(appState)
-                .preferredColorScheme(.light)
+            SplashView()
         }
     }
 }
 
 struct RootView: View {
-    @EnvironmentObject var appState: AppState
-    @State private var showSplash = true
+    @StateObject private var appState   = ApplicationState()
+    @StateObject private var authVM     = AuthViewModel()
 
     var body: some View {
         ZStack {
-            if showSplash {
-                SplashView {
-                    withAnimation(.easeInOut(duration: 0.5)) {
-                        showSplash = false
-                    }
-                }
-                .transition(.opacity)
-                .zIndex(1)
-            } else {
+            switch authVM.authState {
+            case .loading:
+                LoadingView()
+                    .transition(.opacity)
+            case .unauthenticated:
                 if appState.hasCompletedOnboarding {
-                    MainTabView()
+                    AuthLandingView()
                         .transition(.asymmetric(
-                            insertion: .move(edge: .trailing),
-                            removal: .opacity
-                        ))
+                            insertion: .move(edge: .bottom).combined(with: .opacity),
+                            removal: .opacity))
                 } else {
                     OnboardingView()
                         .transition(.opacity)
                 }
+            case .authenticated, .guest:
+                MainTabView()
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .trailing),
+                        removal: .opacity))
             }
         }
-        .animation(.easeInOut(duration: 0.6), value: showSplash)
-        .animation(.easeInOut(duration: 0.6), value: appState.hasCompletedOnboarding)
+        .preferredColorScheme(.light)
+        .animation(.easeInOut(duration: 0.45), value: authVM.authState)
+        .environmentObject(appState)
+        .environmentObject(authVM)
+    }
+}
+
+struct LoadingView: View {
+    var body: some View {
+        ZStack {
+            LinearGradient.seNavyGradient.ignoresSafeArea()
+            VStack(spacing: 20) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(LinearGradient.seAmberGradient)
+                        .frame(width: 72, height: 72)
+                    Image(systemName: "house.fill")
+                        .font(.system(size: 32)).foregroundColor(.white)
+                }
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .tint(Color.seAmber)
+            }
+        }
     }
 }

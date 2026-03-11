@@ -3,7 +3,7 @@ import Combine
 
 class EstimateViewModel: ObservableObject {
     @Published var estimates: [RoomEstimate] = []
-    private let persistence = PersistenceService.shared
+    private let persistence = PersistenceMainService.shared
     private var cancellables = Set<AnyCancellable>()
 
     init() {

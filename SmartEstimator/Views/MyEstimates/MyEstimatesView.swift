@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MyEstimatesView: View {
     @EnvironmentObject var estimateVM: EstimateViewModel
-    @EnvironmentObject var appState: AppState
+    @EnvironmentObject var appState: ApplicationState
     @State private var searchText = ""
     @State private var selectedEstimate: RoomEstimate? = nil
 

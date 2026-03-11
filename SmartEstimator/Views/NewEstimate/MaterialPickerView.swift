@@ -2,12 +2,12 @@ import SwiftUI
 
 struct MaterialPickerView: View {
     @ObservedObject var vm: NewEstimateViewModel
-    @EnvironmentObject var appState: AppState
+    @EnvironmentObject var appState: ApplicationState
     @State private var showAddSheet = false
     @State private var searchText = ""
     @State private var selectedCategory: MaterialCategory? = nil
 
-    var allMaterials: [Material] { PersistenceService.shared.allMaterials() }
+    var allMaterials: [Material] { PersistenceMainService.shared.allMaterials() }
 
     var filtered: [Material] {
         allMaterials.filter { m in
@@ -115,7 +115,7 @@ struct MaterialPickerView: View {
         }
         .sheet(isPresented: $showAddSheet) {
             AddMaterialView(onSave: { mat in
-                PersistenceService.shared.save(material: mat)
+                PersistenceMainService.shared.save(material: mat)
                 vm.addMaterial(mat, wastePercentage: appState.wastePercentage)
             })
         }

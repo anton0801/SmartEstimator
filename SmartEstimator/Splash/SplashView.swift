@@ -1,7 +1,7 @@
 import SwiftUI
+import Combine
 
 struct SplashView: View {
-    let onFinished: () -> Void
 
     @State private var gridOpacity: Double = 0
     @State private var logoScale: CGFloat = 0.3
@@ -10,57 +10,109 @@ struct SplashView: View {
     @State private var taglineOpacity: Double = 0
     @State private var particles: [SplashParticle] = SplashParticle.generate(count: 30)
     @State private var particlesVisible = false
+    
+    @StateObject private var store = Store()
+    @State private var streams = Set<AnyCancellable>()
 
     var body: some View {
-        ZStack {
-            LinearGradient.seNavyGradient
-                .ignoresSafeArea()
-
-            BlueprintGridView()
-                .opacity(gridOpacity)
-
-            ForEach(particles) { p in
-                Circle()
-                    .fill(Color.seAmber.opacity(p.opacity))
-                    .frame(width: p.size, height: p.size)
-                    .offset(x: p.x, y: p.y)
-                    .scaleEffect(particlesVisible ? 1 : 0)
-                    .animation(
-                        .spring(response: 0.8, dampingFraction: 0.5)
-                            .delay(p.delay),
-                        value: particlesVisible
-                    )
-            }
-
-            VStack(spacing: 16) {
+        NavigationView {
+            GeometryReader { geo in
                 ZStack {
-                    RoundedRectangle(cornerRadius: 24)
-                        .fill(LinearGradient.seAmberGradient)
-                        .frame(width: 100, height: 100)
-                    Image(systemName: "house.fill")
-                        .font(.system(size: 44))
-                        .foregroundColor(.white)
-                    Image(systemName: "pencil.and.ruler.fill")
-                        .font(.system(size: 22))
-                        .foregroundColor(.white.opacity(0.9))
-                        .offset(x: 20, y: 20)
+                    LinearGradient.seNavyGradient
+                        .ignoresSafeArea()
+                    
+                    BlueprintGridView()
+                        .opacity(gridOpacity)
+                    
+                    Image("loading_background")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: geo.size.width, height: geo.size.height)
+                        .ignoresSafeArea()
+                        .opacity(0.7)
+                    
+                    ForEach(particles) { p in
+                        Circle()
+                            .fill(Color.seAmber.opacity(p.opacity))
+                            .frame(width: p.size, height: p.size)
+                            .offset(x: p.x, y: p.y)
+                            .scaleEffect(particlesVisible ? 1 : 0)
+                            .animation(
+                                .spring(response: 0.8, dampingFraction: 0.5)
+                                .delay(p.delay),
+                                value: particlesVisible
+                            )
+                    }
+                    
+                    VStack(spacing: 16) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 24)
+                                .fill(LinearGradient.seAmberGradient)
+                                .frame(width: 100, height: 100)
+                            Image(systemName: "house.fill")
+                                .font(.system(size: 44))
+                                .foregroundColor(.white)
+                            Image(systemName: "pencil.and.ruler.fill")
+                                .font(.system(size: 22))
+                                .foregroundColor(.white.opacity(0.9))
+                                .offset(x: 20, y: 20)
+                        }
+                        .scaleEffect(logoScale)
+                        .opacity(logoOpacity)
+                        
+                        Text("Smart Estimator")
+                            .font(.system(.largeTitle, design: .rounded).bold())
+                            .foregroundColor(.white)
+                            .opacity(logoOpacity)
+                        
+                        Text("Calculate materials in seconds")
+                            .font(SEFont.subheadline())
+                            .foregroundColor(Color.white.opacity(0.7))
+                            .offset(y: taglineOffset)
+                            .opacity(taglineOpacity)
+                        
+                        ProgressView()
+                            .tint(.white)
+                    }
+                    
+                    NavigationLink(
+                        destination: SmartWebView().navigationBarHidden(true),
+                        isActive: $store.state.ui.navigateToWeb
+                    ) { EmptyView() }
+                    
+                    NavigationLink(
+                        destination: RootView().navigationBarBackButtonHidden(true),
+                        isActive: $store.state.ui.navigateToMain
+                    ) { EmptyView() }
                 }
-                .scaleEffect(logoScale)
-                .opacity(logoOpacity)
-
-                Text("Smart Estimator")
-                    .font(.system(.largeTitle, design: .rounded).bold())
-                    .foregroundColor(.white)
-                    .opacity(logoOpacity)
-
-                Text("Calculate materials in seconds")
-                    .font(SEFont.subheadline())
-                    .foregroundColor(Color.white.opacity(0.7))
-                    .offset(y: taglineOffset)
-                    .opacity(taglineOpacity)
+                .onAppear {
+                    animate()
+                    store.dispatch(.initialize)
+                    setupStreams()
+                }
+                .fullScreenCover(isPresented: $store.state.ui.showPermissionPrompt) {
+                    SmartNotificationView(program: store)
+                }
+                
+                .fullScreenCover(isPresented: $store.state.ui.showOfflineView) {
+                    UnavailableView()
+                }
             }
+            .ignoresSafeArea()
         }
-        .onAppear { animate() }
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    private func setupStreams() {
+        NotificationCenter.default.publisher(for: Notification.Name("ConversionDataReceived"))
+            .compactMap { $0.userInfo?["conversionData"] as? [String: Any] }
+            .sink { store.dispatch(.trackingReceived($0)) }
+            .store(in: &streams)
+        
+        NotificationCenter.default.publisher(for: Notification.Name("deeplink_values"))
+            .compactMap { $0.userInfo?["deeplinksData"] as? [String: Any] }
+            .sink { store.dispatch(.navigationReceived($0)) }
+            .store(in: &streams)
     }
 
     private func animate() {
@@ -73,9 +125,6 @@ struct SplashView: View {
         }
         withAnimation(.easeOut(duration: 0.5).delay(0.7)) {
             taglineOffset = 0; taglineOpacity = 1
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.4) {
-            onFinished()
         }
     }
 }

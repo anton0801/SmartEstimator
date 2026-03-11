@@ -1,7 +1,7 @@
 import SwiftUI
 import Combine
 
-class AppState: ObservableObject {
+class ApplicationState: ObservableObject {
     @Published var hasCompletedOnboarding: Bool {
         didSet { UserDefaults.standard.set(hasCompletedOnboarding, forKey: "onboarding_complete") }
     }

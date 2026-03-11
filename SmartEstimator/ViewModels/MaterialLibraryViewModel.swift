@@ -6,7 +6,7 @@ class MaterialLibraryViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var selectedCategory: MaterialCategory? = nil
 
-    private let persistence = PersistenceService.shared
+    private let persistence = PersistenceMainService.shared
     private var cancellables = Set<AnyCancellable>()
 
     init() {

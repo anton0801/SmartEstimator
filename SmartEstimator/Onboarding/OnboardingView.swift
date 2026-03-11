@@ -10,7 +10,7 @@ struct OnboardingPage: Identifiable {
 }
 
 struct OnboardingView: View {
-    @EnvironmentObject var appState: AppState
+    @EnvironmentObject var appState: ApplicationState
     @State private var currentPage = 0
 
     let pages: [OnboardingPage] = [

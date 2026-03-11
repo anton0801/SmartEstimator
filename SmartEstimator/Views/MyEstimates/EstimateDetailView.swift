@@ -2,7 +2,7 @@ import SwiftUI
 
 struct EstimateDetailView: View {
     @State var estimate: RoomEstimate
-    @EnvironmentObject var appState: AppState
+    @EnvironmentObject var appState: ApplicationState
     @EnvironmentObject var estimateVM: EstimateViewModel
     @Environment(\.presentationMode) var presentationMode
     @State private var showShareSheet = false

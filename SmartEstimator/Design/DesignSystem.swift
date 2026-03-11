@@ -25,37 +25,24 @@ extension Color {
     }
 }
 
-// MARK: - Gradients
 extension LinearGradient {
-    static let seAmberGradient = LinearGradient(
-        colors: [.seAmber, .seAmberDark],
-        startPoint: .topLeading, endPoint: .bottomTrailing
-    )
-    static let seNavyGradient = LinearGradient(
-        colors: [.seNavy, .seNavyLight],
-        startPoint: .topLeading, endPoint: .bottomTrailing
-    )
+    static let seAmberGradient = LinearGradient(colors: [.seAmber, .seAmberDark], startPoint: .topLeading, endPoint: .bottomTrailing)
+    static let seNavyGradient  = LinearGradient(colors: [.seNavy, .seNavyLight],  startPoint: .topLeading, endPoint: .bottomTrailing)
 }
 
-// MARK: - Typography
 struct SEFont {
-    static func largeTitle() -> Font { .system(.largeTitle, design: .rounded).bold() }
-    static func title()      -> Font { .system(.title,      design: .rounded).bold() }
-    static func title2()     -> Font { .system(.title2,     design: .rounded).weight(.semibold) }
-    static func headline()   -> Font { .system(.headline,   design: .rounded) }
-    static func body()       -> Font { .system(.body,       design: .rounded) }
-    static func subheadline()-> Font { .system(.subheadline,design: .rounded) }
-    static func caption()    -> Font { .system(.caption,    design: .rounded) }
+    static func title()      -> Font { .system(.title,      design: .rounded).weight(.bold) }
+    static func title2()      -> Font { .system(.title2,      design: .rounded).weight(.semibold) }
+    static func headline()    -> Font { .system(.headline,    design: .rounded) }
+    static func body()        -> Font { .system(.body,        design: .rounded) }
+    static func subheadline() -> Font { .system(.subheadline, design: .rounded) }
+    static func caption()     -> Font { .system(.caption,     design: .rounded) }
 }
 
-// MARK: - Card Modifier
 struct SECard: ViewModifier {
     var padding: CGFloat = 16
     func body(content: Content) -> some View {
-        content
-            .padding(padding)
-            .background(Color.seCardBg)
-            .cornerRadius(16)
+        content.padding(padding).background(Color.white).cornerRadius(16)
             .shadow(color: Color.seNavy.opacity(0.08), radius: 12, x: 0, y: 4)
     }
 }
@@ -63,58 +50,39 @@ extension View {
     func seCard(padding: CGFloat = 16) -> some View { modifier(SECard(padding: padding)) }
 }
 
-// MARK: - Button Styles
 struct SEPrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(SEFont.headline())
-            .foregroundColor(.white)
-            .padding(.vertical, 14)
-            .padding(.horizontal, 24)
-            .background(LinearGradient.seAmberGradient)
-            .cornerRadius(14)
+        configuration.label.font(SEFont.headline()).foregroundColor(.white)
+            .padding(.vertical, 14).padding(.horizontal, 24)
+            .background(LinearGradient.seAmberGradient).cornerRadius(14)
             .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
             .shadow(color: Color.seAmber.opacity(0.4), radius: configuration.isPressed ? 4 : 10, y: 4)
             .animation(.spring(response: 0.3, dampingFraction: 0.6), value: configuration.isPressed)
     }
 }
-
 struct SESecondaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(SEFont.headline())
-            .foregroundColor(.seNavy)
-            .padding(.vertical, 14)
-            .padding(.horizontal, 24)
-            .background(Color.seNavy.opacity(0.08))
-            .cornerRadius(14)
+        configuration.label.font(SEFont.headline()).foregroundColor(.seNavy)
+            .padding(.vertical, 14).padding(.horizontal, 24)
+            .background(Color.seNavy.opacity(0.08)).cornerRadius(14)
             .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
             .animation(.spring(response: 0.3, dampingFraction: 0.6), value: configuration.isPressed)
     }
 }
-
 struct ScaleButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(configuration.isPressed ? 0.95 : 1)
+        configuration.label.scaleEffect(configuration.isPressed ? 0.95 : 1)
             .animation(.spring(response: 0.3, dampingFraction: 0.6), value: configuration.isPressed)
     }
 }
 
-// MARK: - Stagger Animation
 struct StaggerAppear: ViewModifier {
     let index: Int
     @State private var appeared = false
-
     func body(content: Content) -> some View {
-        content
-            .opacity(appeared ? 1 : 0)
-            .offset(y: appeared ? 0 : 20)
+        content.opacity(appeared ? 1 : 0).offset(y: appeared ? 0 : 20)
             .onAppear {
-                withAnimation(.spring(response: 0.5, dampingFraction: 0.7)
-                    .delay(Double(index) * 0.07)) {
-                    appeared = true
-                }
+                withAnimation(.spring(response: 0.5, dampingFraction: 0.7).delay(Double(index) * 0.07)) { appeared = true }
             }
     }
 }
@@ -122,19 +90,15 @@ extension View {
     func staggerAppear(index: Int) -> some View { modifier(StaggerAppear(index: index)) }
 }
 
-// MARK: - Corner radius helper
 extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
     }
 }
-
 struct RoundedCorner: Shape {
-    var radius: CGFloat
-    var corners: UIRectCorner
+    var radius: CGFloat; var corners: UIRectCorner
     func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners,
-                                cornerRadii: CGSize(width: radius, height: radius))
-        return Path(path.cgPath)
+        Path(UIBezierPath(roundedRect: rect, byRoundingCorners: corners,
+                          cornerRadii: CGSize(width: radius, height: radius)).cgPath)
     }
 }

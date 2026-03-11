@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MaterialLibraryView: View {
     @EnvironmentObject var libraryVM: MaterialLibraryViewModel
-    @EnvironmentObject var appState: AppState
+    @EnvironmentObject var appState: ApplicationState
     @State private var showAddSheet = false
     @State private var editingMaterial: Material? = nil
 

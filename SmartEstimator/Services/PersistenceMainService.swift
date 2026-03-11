@@ -1,8 +1,8 @@
 import Foundation
 import Combine
 
-class PersistenceService: ObservableObject {
-    static let shared = PersistenceService()
+class PersistenceMainService: ObservableObject {
+    static let shared = PersistenceMainService()
 
     @Published var estimates: [RoomEstimate] = []
     @Published var customMaterials: [Material] = []

@@ -1,8 +1,28 @@
 import SwiftUI
 
+struct UnavailableView: View {
+    var body: some View {
+        GeometryReader { geo in
+            ZStack {
+                Image("internet_bg")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geo.size.width, height: geo.size.height)
+                    .ignoresSafeArea()
+                
+                Image("internet_alert")
+                    .resizable()
+                    .frame(width: 200, height: 180)
+            }
+        }
+        .ignoresSafeArea()
+    }
+}
+
+
 struct NewEstimateView: View {
     @StateObject private var vm = NewEstimateViewModel()
-    @EnvironmentObject var appState: AppState
+    @EnvironmentObject var appState: ApplicationState
 
     var body: some View {
         NavigationView {
